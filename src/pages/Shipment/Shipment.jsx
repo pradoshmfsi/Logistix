@@ -56,7 +56,7 @@ function Shipment() {
           />
           <Stack direction="row" alignItems="center">
             <Typography variant="h6" m={2}>
-              {shipment.source.location} -{shipment.destination.location}
+              {shipment.source.location} - {shipment.destination.location}
             </Typography>
             <Chip
               label={shipment.status}
