@@ -4,11 +4,11 @@
 
 This application is designed for tracking shipments as they move through various locations. Key features include:
 
-View Shipments: Team members can view details of all shipments.  
-Manage Shipments: Users can add new shipments and edit existing ones.  
-Sort Shipments: Shipments can be sorted based on their creation datetime.  
-Filter Shipments: Users can filter shipments by status, creation datetime, source, and destination.  
-This app provides an intuitive interface for managing and tracking shipments effectively.
+1. View Shipments: Team members can view details of all shipments.
+2. Manage Shipments: Users can add new shipments and edit existing ones.
+3. Sort Shipments: Shipments can be sorted based on their creation datetime.
+4. Filter Shipments: Users can filter shipments by status, creation datetime, source, and destination.  
+   This app provides an intuitive interface for managing and tracking shipments effectively.
 
 ## Live Application URL
 
