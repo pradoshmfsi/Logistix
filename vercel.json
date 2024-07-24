@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "src": "/node_modules/(.*)",
-      "dest": "/node_modules/$1"
+      "source": "/node_modules/(.*)",
+      "destination": "/node_modules/$1"
     },
     { "source": "/(.*)", "destination": "/" }
   ]
