@@ -51,11 +51,8 @@ function Shipment() {
             </Typography>
           </StyledBreadcrumbs>
           <MapComponent
-            origin={[shipment.source.latitude, shipment.source.longitude]}
-            destination={[
-              shipment.destination.latitude,
-              shipment.destination.longitude,
-            ]}
+            origin={shipment.source}
+            destination={shipment.destination}
           />
           <Stack direction="row" alignItems="center">
             <Typography variant="h6" m={2}>

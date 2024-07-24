@@ -29,8 +29,8 @@ function MapComponent({ origin, destination }) {
     const getRoute = async () => {
       try {
         const data = {
-          origin,
-          destination,
+          origin: [origin.latitude, origin.longitude],
+          destination: [destination.latitude, destination.longitude],
         };
         const response = await getShipmentRoute(data);
         setRoute(response);
@@ -45,7 +45,7 @@ function MapComponent({ origin, destination }) {
     <>
       {error && <Alert severity="error">{error}</Alert>}
       <MapContainer
-        center={origin}
+        center={[origin.latitude, origin.longitude]}
         zoom={10}
         ref={mapRef}
         style={{ height: '40vh', width: '100%' }}
@@ -54,11 +54,11 @@ function MapComponent({ origin, destination }) {
           // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={origin}>
-          <Popup>Origin: Bhubaneswar</Popup>
+        <Marker position={[origin.latitude, origin.longitude]}>
+          <Popup>Origin: {origin.location}</Popup>
         </Marker>
-        <Marker position={destination}>
-          <Popup>Destination: Cuttack</Popup>
+        <Marker position={[destination.latitude, destination.longitude]}>
+          <Popup>Destination: {destination.location}</Popup>
         </Marker>
         {route.length > 0 && <Polyline positions={route} color="blue" />}
       </MapContainer>
