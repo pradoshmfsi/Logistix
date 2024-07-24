@@ -31,8 +31,8 @@ The Application is deployed in https://aditya-sridhar.github.io/simple-reactjs-a
 
 1. **Register** : Creates an user, with a provided location for the team of that particular location.
 
-2. **Login**  : Allows user to login.
+2. **Login** : Allows user to login.
 
-3. **Dashboard**  : It shows all the shipments based on the logged user's location and id i.e if the shipment has its source or destination same as the user's location or if the shipment is created by that user. It also allows user to sort and filter the data based on many parameters.
+3. **Dashboard** : It shows all the shipments based on the logged user's location and id i.e if the shipment has its source or destination same as the user's location or if the shipment is created by that user. It also allows user to sort and filter the data based on many parameters.
 
-4.**Shipment** : It shows the shipment details, the route of the shipment in the map.
+4. **Shipment** : It shows the shipment details, the route of the shipment in the map.
