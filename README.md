@@ -1,82 +1,38 @@
-# Simple React JS Project
+# Logistix
 
-## What is the use of this Repo
+## Description
 
-This Project is a Simple ReactJS Project which demonstrates the following
+This application is designed for tracking shipments as they move through various locations. Key features include:
 
-1. Creating a Component in React
-2. Making HTTP calls
-3. Communicating between parent and child component
-4. Using Bootstrap along with React
-5. Using Basic Routing in React
-
-The project Template can be used to build bigger projects
+View Shipments: Team members can view details of all shipments.
+Manage Shipments: Users can add new shipments and edit existing ones.
+Sort Shipments: Shipments can be sorted based on their creation datetime.
+Filter Shipments: Users can filter shipments by status, creation datetime, source, and destination.
+This app provides an intuitive interface for managing and tracking shipments effectively.
 
 ## Live Application URL
 
-### https://aditya-sridhar.github.io/simple-reactjs-app
-
 This URL has the application deployed in
 
-## Prerequisites
+## Setup
 
-### Install Node JS
-
-Refer to https://nodejs.org/en/ to install nodejs
-
-### Install create-react-app
-
-Install create-react-app npm package globally. This will help to easily run the project and also build the source files easily. Use the following command to install create-react-app
-
-```bash
-npm install -g create-react-app
-```
+install nodeJS
+download or clone the repository
+run npm install
+Set the .env file
 
 ## Live Application URL
 
 The Application is deployed in https://aditya-sridhar.github.io/simple-reactjs-app
 
-Click on the link to see the application
-
-## Cloning and Running the Application in local
-
-Clone the project into local
-
-Install all the npm packages. Go into the project folder and type the following command to install all npm packages
-
-```bash
-npm install
-```
-
-In order to run the application Type the following command
-
-```bash
-npm start
-```
-
-The Application Runs on **localhost:3000**
-
 ## Application design
 
-#### Components
+#### Pages
 
-1. **Customers** Component : This Component displays a list of customers. This Component gets the data from a json file in assets folder
+1. **Register** : Creates an user, with a provided location for the team of that particular location.
 
-2. **CustomerDetails** Component : This Component Displays the details of the selected customer. This Component gets its data from a json file in assets folder as well. This Component is the Child Component of _Customers_ Component
+2. **Login**  : Allows user to login.
 
-#### HTTP client
+3. **Dashboard**  : It shows all the shipments based on the logged user's location and id i.e if the shipment has its source or destination same as the user's location or if the shipment is created by that user. It also allows user to sort and filter the data based on many parameters.
 
-**axios** library is used to make HTTP Calls
-
-#### URL
-
-The application has just one url /customerlist which ties to _Customers_ Component
-
-## Resources
-
-**create-react-app** : The following link has all the commands that can be used with create-react-app
-https://github.com/facebook/create-react-app
-
-**ReactJS** : Refer to https://reactjs.org/ to understand the concepts of ReactJS
-
-**React Bootstrap** : Refer to https://react-bootstrap.github.io/getting-started/introduction/ to understand how to use React Bootstrap
+4.**Shipment** : It shows the shipment details, the route of the shipment in the map.
