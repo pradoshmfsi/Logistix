@@ -50,13 +50,13 @@ function Shipment() {
               Shipment - {shipment._id}
             </Typography>
           </StyledBreadcrumbs>
-          <MapComponent
+          {/* <MapComponent
             origin={[shipment.source.latitude, shipment.source.longitude]}
             destination={[
               shipment.destination.latitude,
               shipment.destination.longitude,
             ]}
-          />
+          /> */}
           <Stack direction="row" alignItems="center">
             <Typography variant="h6" m={2}>
               {shipment.source.location} -{shipment.destination.location}
