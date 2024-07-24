@@ -79,22 +79,28 @@ function FiltersForm({
     }
   };
 
-  const validateDates = useCallback(() => {
+  const validateDates = () => {
     if (Boolean(created.from) != Boolean(created.to)) {
       setError('Please set both start and end date');
-      return false;
+      return [false, false];
+    } else if (created.from) {
+      setError('');
+      return [true, true];
     }
     setError('');
-    return true;
-  }, [created]);
+    return [true, false];
+  };
 
   const submitFilterForm = () => {
-    if (validateDates()) {
+    const result = validateDates();
+    if (result[1]) {
       setFilters((prevState) => ({
         ...prevState,
         createdFrom: created.from ? dayjs(created.from) : null,
         createdTo: created.to ? dayjs(created.to) : null,
       }));
+    }
+    if (result[0]) {
       setFilterOpen(false);
     }
   };
@@ -110,7 +116,7 @@ function FiltersForm({
 
   useEffect(() => {
     validateDates();
-  }, [validateDates, created]);
+  }, [created]);
 
   return (
     <Dialog open={filterOpen} fullScreen={isXs}>
