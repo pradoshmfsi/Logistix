@@ -33,7 +33,7 @@ This URL has the application deployed in
 
 4. **Shipment** : It shows the shipment details, the route of the shipment in the map.
 
-## Application design
+## Tech Stack
 
 ### This project is built with the following technologies:
 
