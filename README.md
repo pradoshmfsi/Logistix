@@ -16,14 +16,10 @@ This URL has the application deployed in
 
 ## Setup
 
-install nodeJS
-download or clone the repository
-run npm install
+install nodeJS  
+download or clone the repository  
+run npm install  
 Set the .env file
-
-## Live Application URL
-
-The Application is deployed in https://aditya-sridhar.github.io/simple-reactjs-app
 
 ## Application design
 
