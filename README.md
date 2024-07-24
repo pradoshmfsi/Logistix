@@ -16,10 +16,10 @@ This URL has the application deployed in
 
 ## Setup
 
-install nodeJS  
-download or clone the repository  
-run npm install  
-Set the .env file
+1. install nodeJS
+2. download or clone the repository `https://github.com/pradoshmfsi/Logistix`
+3. run npm install
+4. Set the .env file
 
 ## Application design
 
