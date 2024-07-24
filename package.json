@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "postbuild": "cpx 'node_modules/leaflet/dist/images/*' public/images",
     "lint": "eslint . --ext js --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
