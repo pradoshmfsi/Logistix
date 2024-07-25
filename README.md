@@ -12,7 +12,7 @@ This application is designed for tracking shipments as they move through various
 
 ## Live Application URL
 
-This URL has the application deployed in
+This URL has the application deployed in `https://logistix-gray.vercel.app/`
 
 ## Setup
 
