@@ -146,10 +146,8 @@ function Dashboard() {
           Add Shipment
         </Button>
       </Box>
-
-      {loading ? (
-        <CircularLoader />
-      ) : !isXs ? (
+      {loading && <CircularLoader />}
+      {!isXs ? (
         <CustomTable
           data={data}
           page={page}
