@@ -52,6 +52,7 @@ function FiltersForm({
     }));
   };
 
+  /** Sets the created filters */
   const handleDateChange = (date, name) => {
     setCreated((prevState) => ({
       ...prevState,
@@ -65,6 +66,9 @@ function FiltersForm({
     }
   };
 
+  /**
+   * Handles the 'created by' filter
+   */
   const handleCheckbox = () => {
     if (!filters.createdBy) {
       setFilters((prevState) => ({
@@ -79,6 +83,9 @@ function FiltersForm({
     }
   };
 
+  /**
+   * Validate dates of created from and created to filters
+   */
   const validateDates = () => {
     if (Boolean(created.from) != Boolean(created.to)) {
       setError('Please set both start and end date');
@@ -91,6 +98,9 @@ function FiltersForm({
     return [true, false];
   };
 
+  /**
+   * Sets the date filters if needed, and views the filtered results.
+   */
   const submitFilterForm = () => {
     const result = validateDates();
     if (result[1]) {
@@ -124,7 +134,6 @@ function FiltersForm({
         Filters
       </StyledDialogTitle>
       <StyledIconButton
-        aria-label="close"
         sx={{
           position: 'absolute',
           right: 8,

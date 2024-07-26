@@ -102,17 +102,13 @@ function CustomTable({
                         <Stack direction="row">
                           <IconButton
                             onClick={() => handleEdit(shipment)}
-                            aria-label="edit"
                             disabled={
                               !(getLoggedUserId() === shipment.createdBy._id)
                             }
                           >
                             <EditIcon />
                           </IconButton>
-                          <IconButton
-                            onClick={() => handleView(shipment._id)}
-                            aria-label="view"
-                          >
+                          <IconButton onClick={() => handleView(shipment._id)}>
                             <RemoveRedEyeIcon />
                           </IconButton>
                         </Stack>

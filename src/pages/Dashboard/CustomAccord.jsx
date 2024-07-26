@@ -49,11 +49,7 @@ function CustomAccord({
             {data.length > 0 ? (
               data.map((shipment) => (
                 <Accordion key={shipment._id} sx={{ fontFamily: 'Roboto' }}>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel3-content"
-                    id="panel3-header"
-                  >
+                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                     <Stack
                       direction="row"
                       spacing={2}
@@ -88,7 +84,6 @@ function CustomAccord({
                   <AccordionActions>
                     <Button
                       onClick={() => handleEdit(shipment)}
-                      aria-label="edit"
                       disabled={!(getLoggedUserId() === shipment.createdBy._id)}
                     >
                       Edit

@@ -40,7 +40,7 @@ function Shipment() {
 
   return shipment ? (
     <StyledBox>
-      <StyledBreadcrumbs aria-label="breadcrumb">
+      <StyledBreadcrumbs>
         <Link underline="hover" color="inherit" href="/dashboard">
           Dashboard
         </Link>
