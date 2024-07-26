@@ -1,8 +1,7 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
-function CustomSelect({ value, handleChange }) {
+function CustomSelect({ value, handleChange, required }) {
   const list = [
-    ['', 'Select status'],
     ['In-Transit', 'In-Transit'],
     ['Delivered', 'Delivered'],
     ['Delayed', 'Delayed'],
@@ -17,6 +16,11 @@ function CustomSelect({ value, handleChange }) {
         name="status"
         onChange={(e) => handleChange(e)}
       >
+        {!required && (
+          <MenuItem value="">
+            <em>Select status</em>
+          </MenuItem>
+        )}
         {list.map((item, index) => (
           <MenuItem value={item[0]} key={index}>
             {item[1]}

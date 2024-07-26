@@ -138,7 +138,11 @@ function FiltersForm({
       <Divider />
       <DialogContent>
         {error && <Alert severity="error">{error}</Alert>}
-        <CustomSelect handleChange={handleInputChange} value={filters.status} />
+        <CustomSelect
+          handleChange={handleInputChange}
+          value={filters.status}
+          required={false}
+        />
         <Autocomplete
           options={locations}
           getOptionLabel={(option) => option.location}

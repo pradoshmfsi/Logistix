@@ -19,8 +19,8 @@ function MapComponent({ origin, destination }) {
   const [route, setRoute] = useState([]);
   const [error, setError] = useState('');
 
-  //Handling leaflet's icon bug.
-  let DefaultIcon = L.icon({
+  // Handling leaflet's icon bug.
+  const DefaultIcon = L.icon({
     iconUrl: icon,
     shadowUrl: iconShadow,
     iconSize: [25, 41],
@@ -38,7 +38,7 @@ function MapComponent({ origin, destination }) {
         };
         const response = await getShipmentRoute(data);
         setRoute(response);
-      } catch (error) {
+      } catch (err) {
         setError('Error fetching route details');
       }
     };

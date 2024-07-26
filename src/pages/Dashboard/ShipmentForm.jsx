@@ -270,6 +270,7 @@ function ShipmentForm({
           <CustomSelect
             handleChange={handleInputChange}
             value={formData.status}
+            required={true}
           />
         </Stack>
         <TextField
