@@ -20,6 +20,7 @@ import {
   StyledIconButton,
 } from './styledComponents';
 import { useDashboardContext } from '../../store/DashboardContext';
+import { TEXTAREA } from '../../constants/styles';
 
 function ShipmentForm({ locations }) {
   const { isXs, type, setType, shipment, setSnackbar, setFlag } =
@@ -269,7 +270,7 @@ function ShipmentForm({ locations }) {
         <TextField
           label="Description"
           multiline
-          rows={4}
+          rows={TEXTAREA.ROWS}
           fullWidth
           margin="normal"
           variant="outlined"

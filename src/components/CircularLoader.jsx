@@ -1,4 +1,5 @@
 import { Box, CircularProgress } from '@mui/material';
+import { BACKGROUND } from '../constants/styles';
 
 function CircularLoader() {
   return (
@@ -12,7 +13,7 @@ function CircularLoader() {
         left: 0,
         width: '100%',
         height: '100%',
-        backgroundColor: 'rgba(255, 255, 255, 0.4)',
+        backgroundColor: BACKGROUND.BLUR,
         zIndex: 1000,
       }}
     >

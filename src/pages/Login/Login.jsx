@@ -13,6 +13,7 @@ import logo from '/Logistix_logo.png';
 import CustomSnackbar from '../../components/CustomSnackbar';
 import { login } from './loginApi';
 import { Controller, useForm } from 'react-hook-form';
+import { FORM, PADDING } from '../../constants/styles';
 
 function Login() {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ function Login() {
       container
       justifyContent="center"
       alignItems="center"
-      style={{ minHeight: '95vh' }}
+      style={{ minHeight: FORM.CONTAINER_MIN_HEIGHT }}
     >
       <Grid
         item
@@ -52,16 +53,16 @@ function Login() {
         md={6}
         lg={4}
         sx={{
-          padding: '2rem',
-          border: '1px solid #d7d7d7',
-          borderRadius: '4px',
+          padding: PADDING.LARGE,
+          border: FORM.BORDER,
+          borderRadius: FORM.BORDER_RADIUS,
         }}
       >
         <Box sx={{ textAlign: 'center' }}>
           <img
             src={logo}
             alt="Login"
-            style={{ width: '100%', maxWidth: '250px' }}
+            style={{ width: '100%', maxWidth: FORM.IMAGE_LOGIN }}
           />
         </Box>
         {error && <Alert severity="error">{error}</Alert>}
@@ -112,7 +113,7 @@ function Login() {
             type="submit"
             variant="contained"
             color="primary"
-            sx={{ mt: 2, height: '40px' }}
+            sx={{ mt: 2, height: FORM.BUTTON_HEIGHT }}
             disabled={isSubmitting}
             fullWidth
           >

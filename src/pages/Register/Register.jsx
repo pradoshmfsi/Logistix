@@ -13,6 +13,7 @@ import logo from '/Logistix_logo.png';
 import Validator from '../../utils/Validator';
 import { getLocations } from '../Dashboard/dashboardApi';
 import { addUser } from './registerApi';
+import { FORM, MARGIN, PADDING } from '../../constants/styles';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -162,7 +163,7 @@ function Register() {
       container
       justifyContent="center"
       alignItems="center"
-      style={{ minHeight: '95vh' }}
+      style={{ minHeight: FORM.CONTAINER_MIN_HEIGHT }}
     >
       <Grid
         item
@@ -171,9 +172,9 @@ function Register() {
         md={6}
         lg={4}
         sx={{
-          padding: '2rem',
-          border: '1px solid #d7d7d7',
-          borderRadius: '4px',
+          padding: PADDING.LARGE,
+          border: FORM.BORDER,
+          borderRadius: FORM.BORDER_RADIUS,
         }}
         component="form"
         onSubmit={handleSubmit}
@@ -182,7 +183,7 @@ function Register() {
           <img
             src={logo}
             alt="Login"
-            style={{ width: '100%', maxWidth: '150px' }}
+            style={{ width: '100%', maxWidth: FORM.IMAGE_REGISTER }}
           />
         </Box>
 
@@ -250,7 +251,7 @@ function Register() {
           isOptionEqualToValue={(option, value) => option._id === value?._id}
           onChange={(e, value) => handleInputChange(e, 'location', value)}
           value={formData.location}
-          sx={{ mt: 2 }}
+          sx={{ mt: MARGIN.MEDIUM }}
           fullWidth
         />
 
@@ -258,7 +259,7 @@ function Register() {
           type="submit"
           variant="contained"
           color="primary"
-          sx={{ mt: 2, height: '40px' }}
+          sx={{ mt: MARGIN.LARGE, height: FORM.BUTTON_HEIGHT }}
           disabled={loading}
           fullWidth
         >

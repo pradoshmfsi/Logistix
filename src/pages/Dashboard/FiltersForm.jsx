@@ -23,6 +23,7 @@ import {
   StyledIconButton,
 } from './styledComponents';
 import { useDashboardContext } from '../../store/DashboardContext';
+import { MARGIN } from '../../constants/styles';
 
 function FiltersForm({ locations }) {
   const { filterOpen, setFilterOpen, filters, setFilters, resetFilters, isXs } =
@@ -153,7 +154,7 @@ function FiltersForm({ locations }) {
           isOptionEqualToValue={(option, value) => option._id === value?._id}
           onChange={(e, value) => handleInputChange(e, 'source', value)}
           value={filters.source}
-          sx={{ mt: 2 }}
+          sx={{ mt: MARGIN.LARGE }}
           fullWidth
         />
         <Autocomplete
@@ -169,7 +170,7 @@ function FiltersForm({ locations }) {
           isOptionEqualToValue={(option, value) => option._id === value?._id}
           onChange={(e, value) => handleInputChange(e, 'destination', value)}
           value={filters.destination}
-          sx={{ mt: 2 }}
+          sx={{ mt: MARGIN.LARGE }}
           fullWidth
         />
         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -197,7 +198,7 @@ function FiltersForm({ locations }) {
           }
           label="Created by me"
         />
-        <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
+        <Stack direction="row" spacing={2} sx={{ mt: MARGIN.LARGE }}>
           <StyledButton variant="contained" onClick={submitFilterForm}>
             View Results
           </StyledButton>

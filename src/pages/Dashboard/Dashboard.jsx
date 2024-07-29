@@ -10,6 +10,7 @@ import ShipmentAccordion from './ShipmentAccordion';
 import CircularLoader from '../../components/CircularLoader';
 import { getLocations, getShipments } from './dashboardApi';
 import { useDashboardContext } from '../../store/DashboardContext';
+import { MARGIN } from '../../constants/styles';
 
 function Dashboard() {
   const [loading, setLoading] = useState(false);
@@ -81,7 +82,7 @@ function Dashboard() {
   }
   return (
     <>
-      <Box sx={{ textAlign: 'right', m: 2 }}>
+      <Box sx={{ textAlign: 'right', m: MARGIN.LARGE }}>
         <IconButton
           color="primary"
           onClick={() => dashboardContext.setFilterOpen(true)}
@@ -94,14 +95,17 @@ function Dashboard() {
             <TuneIcon />
           </Badge>
         </IconButton>
-        <IconButton onClick={dashboardContext.resetFilters} sx={{ ml: 1 }}>
+        <IconButton
+          onClick={dashboardContext.resetFilters}
+          sx={{ ml: MARGIN.SMALL }}
+        >
           <RestartAltIcon />
         </IconButton>
 
         <Button
           variant="contained"
           onClick={() => dashboardContext.setModalType('add')}
-          sx={{ ml: 2 }}
+          sx={{ ml: MARGIN.LARGE }}
         >
           Add Shipment
         </Button>

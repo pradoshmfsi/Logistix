@@ -15,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import logo from '/Logistix_logo.png';
+import { FONTSIZE, MARGIN, MENU, PADDING } from '../constants/styles';
 
 const pages = ['Dashboard'];
 
@@ -60,7 +61,7 @@ function ResponsiveAppbar() {
             <img
               src={logo}
               alt="Login"
-              style={{ width: '100%', maxWidth: '150px' }}
+              style={{ width: '100%', maxWidth: MENU.IMAGE_WIDTH }}
             />
           </Box>
 
@@ -105,7 +106,7 @@ function ResponsiveAppbar() {
             <img
               src={logo}
               alt="Login"
-              style={{ width: '100%', maxWidth: '150px' }}
+              style={{ width: '100%', maxWidth: MENU.IMAGE_WIDTH }}
             />
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -117,7 +118,7 @@ function ResponsiveAppbar() {
                   my: 2,
                   color: 'priar',
                   display: 'block',
-                  fontSize: '1rem',
+                  fontSize: FONTSIZE.MEDIUM,
                 }}
               >
                 {page}
@@ -132,7 +133,7 @@ function ResponsiveAppbar() {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: MENU.MARGIN_TOP }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -147,11 +148,17 @@ function ResponsiveAppbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <Box sx={{ padding: '1rem', display: 'flex', width: '300px' }}>
+              <Box
+                sx={{
+                  padding: PADDING.SMALL,
+                  display: 'flex',
+                  width: MENU.CARD_WIDTH,
+                }}
+              >
                 <Avatar />
-                <Box sx={{ flexGrow: 1, ml: 1 }}>
+                <Box sx={{ flexGrow: 1, ml: MARGIN.SMALL }}>
                   <Typography>{user.name}</Typography>
-                  <Typography sx={{ fontSize: '0.8rem' }}>
+                  <Typography sx={{ fontSize: FONTSIZE.SMALL }}>
                     {user.email}
                   </Typography>
                 </Box>
@@ -159,11 +166,11 @@ function ResponsiveAppbar() {
               <Divider />
               <Box
                 sx={{
-                  padding: '1rem',
+                  padding: PADDING.SMALL,
                   pt: 0,
                   display: 'flex',
                   alignItems: 'center',
-                  mt: 2,
+                  mt: MARGIN.SMALL,
                 }}
               >
                 <LocationOnIcon
