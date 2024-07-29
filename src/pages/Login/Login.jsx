@@ -12,57 +12,34 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '/Logistix_logo.png';
 import CustomSnackbar from '../../components/CustomSnackbar';
 import { login } from './loginApi';
+import { Controller, useForm } from 'react-hook-form';
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [formErrors, setFormErrors] = useState({
-    email: '',
-    password: '',
-  });
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
-
   const navigate = useNavigate();
   const location = useLocation();
-
+  const [error, setError] = useState(false);
   const [snackbar, setSnackbar] = useState(
     location.state ? location.state.message : '',
   );
 
-  const handleLogin = async () => {
-    setLoading(true);
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm();
+
+  const handleLogin = async (data) => {
     try {
-      const data = {
-        email,
-        password,
+      const payload = {
+        email: data.email,
+        password: data.password,
       };
-      await login(data);
+      await login(payload);
       setLoading(false);
       navigate('/dashboard');
     } catch (error) {
       setError(error.response.data.message);
-      setLoading(false);
     }
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (validate()) {
-      handleLogin();
-    }
-  };
-
-  const validate = () => {
-    const tempErrors = { email: '', password: '' };
-    tempErrors.email = email ? '' : 'Email is required.';
-    tempErrors.password = password ? '' : 'Password is required.';
-    if (email) {
-      const emailPattern = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
-      tempErrors.email = emailPattern.test(email) ? '' : 'Email is not valid.';
-    }
-    setFormErrors(tempErrors);
-    return Object.values(tempErrors).every((x) => x === '');
   };
 
   return (
@@ -83,8 +60,6 @@ function Login() {
           border: '1px solid #d7d7d7',
           borderRadius: '4px',
         }}
-        component="form"
-        onSubmit={handleSubmit}
       >
         <Box sx={{ textAlign: 'center' }}>
           <img
@@ -93,46 +68,67 @@ function Login() {
             style={{ width: '100%', maxWidth: '250px' }}
           />
         </Box>
-
         {error && <Alert severity="error">{error}</Alert>}
-        <TextField
-          label="Email"
-          type="text"
-          variant="outlined"
-          margin="normal"
-          fullWidth
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          error={Boolean(formErrors.email)}
-          helperText={formErrors.email}
-        />
-        <TextField
-          label="Password"
-          type="password"
-          variant="outlined"
-          margin="normal"
-          fullWidth
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          error={Boolean(formErrors.password)}
-          helperText={formErrors.password}
-        />
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          sx={{ mt: 2, height: '40px' }}
-          disabled={loading}
-          fullWidth
-        >
-          {loading ? <CircularProgress size={20} /> : 'Login'}
-        </Button>
-        <Typography sx={{ textAlign: 'center', mt: 2 }}>
-          Don't have an account?
-          <Link component="button" to="/register">
-            Register here
-          </Link>
-        </Typography>
+        <Box component="form" onSubmit={handleSubmit(handleLogin)} noValidate>
+          <Controller
+            name="email"
+            control={control}
+            defaultValue=""
+            rules={{
+              required: 'Email is required',
+              pattern: {
+                value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                message: 'Invalid email address',
+              },
+            }}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label="Email"
+                type="text"
+                variant="outlined"
+                margin="normal"
+                fullWidth
+                error={Boolean(errors.email)}
+                helperText={errors.email ? errors.email.message : ''}
+              />
+            )}
+          />
+          <Controller
+            name="password"
+            control={control}
+            defaultValue=""
+            rules={{ required: 'Password is required' }}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label="Password"
+                type="password"
+                variant="outlined"
+                margin="normal"
+                fullWidth
+                error={Boolean(errors.password)}
+                helperText={errors.password ? errors.password.message : ''}
+              />
+            )}
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            sx={{ mt: 2, height: '40px' }}
+            disabled={isSubmitting}
+            fullWidth
+          >
+            {isSubmitting ? <CircularProgress size={20} /> : 'Login'}
+          </Button>
+          <Typography sx={{ textAlign: 'center', mt: 2 }}>
+            Don't have an account?
+            <Link component="button" to="/register">
+              Register here
+            </Link>
+          </Typography>
+        </Box>
       </Grid>
       <CustomSnackbar
         message={{
