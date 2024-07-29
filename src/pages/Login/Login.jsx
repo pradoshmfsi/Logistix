@@ -30,11 +30,7 @@ function Login() {
 
   const handleLogin = async (data) => {
     try {
-      const payload = {
-        email: data.email,
-        password: data.password,
-      };
-      await login(payload);
+      await login(data);
       setLoading(false);
       navigate('/dashboard');
     } catch (error) {

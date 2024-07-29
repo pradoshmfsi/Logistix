@@ -7,7 +7,6 @@ import {
   TableRow,
   TablePagination,
   Paper,
-  CircularProgress,
   Chip,
   Stack,
   IconButton,
@@ -19,19 +18,22 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { useNavigate } from 'react-router-dom';
 import { GetCustomDateString, getLoggedUserId } from '../../utils/Utils';
 import { getShipmentStatusStyle } from './dashboardApi';
+import { useDashboardContext } from '../../store/DashboardContext';
+import CircularLoader from '../../components/CircularLoader';
 
-function ShipmentGrid({
-  data,
-  page,
-  rowsPerPage,
-  totalRows,
-  onChangePage,
-  onChangeRowsPerPage,
-  handleModalType,
-  handleSelectedShipment,
-  sortData,
-  handleSortData,
-}) {
+function ShipmentGrid({ data }) {
+  const {
+    page,
+    rowsPerPage,
+    totalRows,
+    handlePageChange,
+    handleChangeRowsPerPage,
+    setModalType,
+    setSelectedShipment,
+    sortData,
+    setSortData,
+  } = useDashboardContext();
+
   const navigate = useNavigate();
 
   const handleView = (id) => {
@@ -39,14 +41,14 @@ function ShipmentGrid({
   };
 
   const handleEdit = (shipment) => {
-    handleModalType('edit');
-    handleSelectedShipment(shipment);
+    setModalType('edit');
+    setSelectedShipment(shipment);
   };
 
   return (
     <Paper sx={{ m: 2 }} elevation={4}>
       {!data ? (
-        <CircularProgress />
+        <CircularLoader />
       ) : (
         <>
           <TableContainer>
@@ -61,7 +63,7 @@ function ShipmentGrid({
                       active={Boolean(sortData.createdAt)}
                       direction={sortData.createdAt === -1 ? 'desc' : 'asc'}
                       onClick={() => {
-                        handleSortData({
+                        setSortData({
                           createdAt: sortData.createdAt === -1 ? 1 : -1,
                         });
                       }}
@@ -131,8 +133,8 @@ function ShipmentGrid({
             count={totalRows}
             rowsPerPage={rowsPerPage}
             page={page}
-            onPageChange={onChangePage}
-            onRowsPerPageChange={onChangeRowsPerPage}
+            onPageChange={handlePageChange}
+            onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </>
       )}

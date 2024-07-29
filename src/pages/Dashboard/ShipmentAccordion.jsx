@@ -17,17 +17,20 @@ import { useNavigate } from 'react-router-dom';
 import ShipmentGridCell from './ShipmentGridCell';
 import { GetCustomDateString, getLoggedUserId } from '../../utils/Utils';
 import { getShipmentStatusStyle } from './dashboardApi';
+import { useDashboardContext } from '../../store/DashboardContext';
+import CircularLoader from '../../components/CircularLoader';
 
-function ShipmentAccordion({
-  data,
-  page,
-  rowsPerPage,
-  totalRows,
-  onChangePage,
-  onChangeRowsPerPage,
-  handleModalType,
-  handleSelectedShipment,
-}) {
+function ShipmentAccordion({ data }) {
+  const {
+    page,
+    rowsPerPage,
+    totalRows,
+    handlePageChange,
+    handleChangeRowsPerPage,
+    setModalType,
+    setSelectedShipment,
+  } = useDashboardContext();
+
   const navigate = useNavigate();
 
   const handleView = (id) => {
@@ -35,14 +38,14 @@ function ShipmentAccordion({
   };
 
   const handleEdit = (shipment) => {
-    handleModalType('edit');
-    handleSelectedShipment(shipment);
+    setModalType('edit');
+    setSelectedShipment(shipment);
   };
 
   return (
     <Paper sx={{ m: 2 }} elevation={4}>
       {!data ? (
-        <CircularProgress />
+        <CircularLoader />
       ) : (
         <>
           <Box>
@@ -106,8 +109,8 @@ function ShipmentAccordion({
             count={totalRows}
             rowsPerPage={rowsPerPage}
             page={page}
-            onPageChange={onChangePage}
-            onRowsPerPageChange={onChangeRowsPerPage}
+            onPageChange={handlePageChange}
+            onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </>
       )}

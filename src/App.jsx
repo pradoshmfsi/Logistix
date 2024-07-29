@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import LoggedOutRoutes from './components/LoggedOutRoutes';
 import Layout from './layout/Layout';
 import Shipment from './pages/Shipment/Shipment';
+import { DashboardProvider } from './store/DashboardContext';
 
 function App() {
   return (
@@ -17,7 +18,14 @@ function App() {
           <Route path="/register" element={<Register />} />
         </Route>
         <Route element={<Layout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <DashboardProvider>
+                <Dashboard />
+              </DashboardProvider>
+            }
+          />
           <Route path="/shipment/:shipmentId" element={<Shipment />} />
         </Route>
       </Routes>

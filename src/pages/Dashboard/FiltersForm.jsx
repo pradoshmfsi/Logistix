@@ -8,10 +8,8 @@ import {
   FormControlLabel,
   Stack,
   TextField,
-  useMediaQuery,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useTheme } from '@mui/material/styles';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { useEffect, useState } from 'react';
@@ -24,17 +22,11 @@ import {
   StyledDialogTitle,
   StyledIconButton,
 } from './styledComponents';
+import { useDashboardContext } from '../../store/DashboardContext';
 
-function FiltersForm({
-  filterOpen,
-  setFilterOpen,
-  locations,
-  filters,
-  setFilters,
-  resetFilters,
-}) {
-  const theme = useTheme();
-  const isXs = useMediaQuery(theme.breakpoints.down('md'));
+function FiltersForm({ locations }) {
+  const { filterOpen, setFilterOpen, filters, setFilters, resetFilters, isXs } =
+    useDashboardContext();
 
   const [created, setCreated] = useState({
     from: null,

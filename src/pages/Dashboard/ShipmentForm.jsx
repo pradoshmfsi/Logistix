@@ -7,10 +7,8 @@ import {
   Divider,
   Stack,
   TextField,
-  useMediaQuery,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useTheme } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
 import Validator from '../../utils/Validator';
 import StatusDropdown from './StatusDropdown';
@@ -21,17 +19,12 @@ import {
   StyledDialogTitle,
   StyledIconButton,
 } from './styledComponents';
+import { useDashboardContext } from '../../store/DashboardContext';
 
-function ShipmentForm({
-  type,
-  handleType,
-  locations,
-  shipment,
-  setSnackbar,
-  setFlag,
-}) {
-  const theme = useTheme();
-  const isXs = useMediaQuery(theme.breakpoints.down('md'));
+function ShipmentForm({ locations }) {
+  const { isXs, type, setType, shipment, setSnackbar, setFlag } =
+    useDashboardContext();
+
   const [formData, setFormData] = useState({
     source: null,
     destination: null,
