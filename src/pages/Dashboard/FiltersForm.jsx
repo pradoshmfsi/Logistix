@@ -17,7 +17,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { useEffect, useState } from 'react';
 import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import dayjs from 'dayjs';
-import CustomSelect from './CustomSelect';
+import StatusDropdown from './StatusDropdown';
 import { getLoggedUserId } from '../../utils/Utils';
 import {
   StyledButton,
@@ -147,7 +147,7 @@ function FiltersForm({
       <Divider />
       <DialogContent>
         {error && <Alert severity="error">{error}</Alert>}
-        <CustomSelect
+        <StatusDropdown
           handleChange={handleInputChange}
           value={filters.status}
           required={false}

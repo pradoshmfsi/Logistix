@@ -13,7 +13,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useTheme } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
 import Validator from '../../utils/Validator';
-import CustomSelect from './CustomSelect';
+import StatusDropdown from './StatusDropdown';
 import { addShipments, updateShipments } from './dashboardApi';
 import { getLoggedUserId } from '../../utils/Utils';
 import {
@@ -267,7 +267,7 @@ function ShipmentForm({
             error={Boolean(formErrors.weight)}
             helperText={formErrors.weight}
           />
-          <CustomSelect
+          <StatusDropdown
             handleChange={handleInputChange}
             value={formData.status}
             required={true}

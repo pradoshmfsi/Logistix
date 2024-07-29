@@ -11,8 +11,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '/Logistix_logo.png';
 import Validator from '../../utils/Validator';
-import userAxios from '../../api/userAxios';
 import { getLocations } from '../Dashboard/dashboardApi';
+import { addUser } from './registerApi';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -91,12 +91,11 @@ function Register() {
   const handleRegister = async () => {
     setLoading(true);
     try {
-      const url = `user/register`;
       const payload = { ...formData, location: formData.location._id };
-      await userAxios.post(url, payload);
+      const response = await addUser(payload);
       setLoading(false);
       navigate('/login', {
-        state: { message: 'User registered successfully!' },
+        state: { message: response },
       });
     } catch (error) {
       setError(error.response.data.message);

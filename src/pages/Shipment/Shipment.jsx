@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 import MapComponent from './MapComponent';
 import CircularLoader from '../../components/CircularLoader';
 import { getShipmentDetails } from './shipmentApi';
-import CustomGridCell from '../Dashboard/CustomGridCell';
+import ShipmentGridCell from '../Dashboard/ShipmentGridCell';
 import { StyledBox, StyledBreadcrumbs } from './styledComponents';
 import { GetCustomDateString } from '../../utils/Utils';
 import { getShipmentStatusStyle } from '../Dashboard/dashboardApi';
@@ -66,19 +66,22 @@ function Shipment() {
       <Divider />
       <Stack direction={{ xs: 'column', sm: 'row' }}>
         <Box m={1} sx={{ width: '50%', minWidth: '300px' }}>
-          <CustomGridCell title="ShipmentID" value={shipment._id} />
-          <CustomGridCell title="Weight" value={shipment.weight} />
-          <CustomGridCell title="Created By" value={shipment.createdBy.name} />
-          <CustomGridCell
+          <ShipmentGridCell title="ShipmentID" value={shipment._id} />
+          <ShipmentGridCell title="Weight" value={shipment.weight} />
+          <ShipmentGridCell
+            title="Created By"
+            value={shipment.createdBy.name}
+          />
+          <ShipmentGridCell
             title="Created At"
             value={GetCustomDateString(shipment.createdAt)}
           />
-          <CustomGridCell
+          <ShipmentGridCell
             title="Updated at"
             value={GetCustomDateString(shipment.updatedAt)}
           />
-          <CustomGridCell title="Source" value={shipment.source.location} />
-          <CustomGridCell
+          <ShipmentGridCell title="Source" value={shipment.source.location} />
+          <ShipmentGridCell
             title="Destination"
             value={shipment.destination.location}
           />

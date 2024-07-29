@@ -14,11 +14,11 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useNavigate } from 'react-router-dom';
-import CustomGridCell from './CustomGridCell';
+import ShipmentGridCell from './ShipmentGridCell';
 import { GetCustomDateString, getLoggedUserId } from '../../utils/Utils';
 import { getShipmentStatusStyle } from './dashboardApi';
 
-function CustomAccord({
+function ShipmentAccordion({
   data,
   page,
   rowsPerPage,
@@ -66,17 +66,17 @@ function CustomAccord({
                     </Stack>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <CustomGridCell title="ShipmentID" value={shipment._id} />
-                    <CustomGridCell title="Weight" value={shipment.weight} />
-                    <CustomGridCell
+                    <ShipmentGridCell title="ShipmentID" value={shipment._id} />
+                    <ShipmentGridCell title="Weight" value={shipment.weight} />
+                    <ShipmentGridCell
                       title="Created By"
                       value={shipment.createdBy.name}
                     />
-                    <CustomGridCell
+                    <ShipmentGridCell
                       title="Created At"
                       value={GetCustomDateString(shipment.createdAt)}
                     />
-                    <CustomGridCell
+                    <ShipmentGridCell
                       title="Updated at"
                       value={GetCustomDateString(shipment.updatedAt)}
                     />
@@ -115,4 +115,4 @@ function CustomAccord({
   );
 }
 
-export default CustomAccord;
+export default ShipmentAccordion;

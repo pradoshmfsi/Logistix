@@ -14,7 +14,7 @@ import ShipmentGrid from './ShipmentGrid';
 import ShipmentForm from './ShipmentForm';
 import CustomSnackbar from '../../components/CustomSnackbar';
 import FiltersForm from './FiltersForm';
-import CustomAccord from './CustomAccord';
+import ShipmentAccordion from './ShipmentAccordion';
 import CircularLoader from '../../components/CircularLoader';
 import { getLocations, getShipments } from './dashboardApi';
 
@@ -161,7 +161,7 @@ function Dashboard() {
           handleSortData={handleSortData}
         />
       ) : (
-        <CustomAccord
+        <ShipmentAccordion
           data={data}
           page={page}
           rowsPerPage={rowsPerPage}

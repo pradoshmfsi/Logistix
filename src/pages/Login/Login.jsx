@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '/Logistix_logo.png';
 import CustomSnackbar from '../../components/CustomSnackbar';
-import userAxios from '../../api/userAxios';
+import { login } from './loginApi';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -33,14 +33,11 @@ function Login() {
   const handleLogin = async () => {
     setLoading(true);
     try {
-      const url = `user/login`;
-      const response = await userAxios.post(url, {
+      const data = {
         email,
         password,
-      });
-      const { data } = response;
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
+      };
+      await login(data);
       setLoading(false);
       navigate('/dashboard');
     } catch (error) {

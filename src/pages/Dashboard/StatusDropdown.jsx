@@ -1,6 +1,6 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
-function CustomSelect({ value, handleChange, required }) {
+function StatusDropdown({ value, handleChange, required }) {
   const list = [
     ['In-Transit', 'In-Transit'],
     ['Delivered', 'Delivered'],
@@ -31,4 +31,4 @@ function CustomSelect({ value, handleChange, required }) {
   );
 }
 
-export default CustomSelect;
+export default StatusDropdown;

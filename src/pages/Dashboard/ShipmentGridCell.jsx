@@ -1,6 +1,6 @@
 import { Grid, Typography } from '@mui/material';
 
-function CustomGridCell({ title, value }) {
+function ShipmentGridCell({ title, value }) {
   return (
     <Grid container spacing={2}>
       <Grid item xs={4}>
@@ -15,4 +15,4 @@ function CustomGridCell({ title, value }) {
   );
 }
 
-export default CustomGridCell;
+export default ShipmentGridCell;
