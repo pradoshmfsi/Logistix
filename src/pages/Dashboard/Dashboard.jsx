@@ -10,7 +10,7 @@ import {
 import TuneIcon from '@mui/icons-material/Tune';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { useTheme } from '@mui/material/styles';
-import CustomTable from './CustomTable';
+import ShipmentGrid from './ShipmentGrid';
 import ShipmentForm from './ShipmentForm';
 import CustomSnackbar from '../../components/CustomSnackbar';
 import FiltersForm from './FiltersForm';
@@ -148,7 +148,7 @@ function Dashboard() {
       </Box>
       {loading && <CircularLoader />}
       {!isXs ? (
-        <CustomTable
+        <ShipmentGrid
           data={data}
           page={page}
           rowsPerPage={rowsPerPage}

@@ -20,7 +20,7 @@ import { useNavigate } from 'react-router-dom';
 import { GetCustomDateString, getLoggedUserId } from '../../utils/Utils';
 import { getShipmentStatusStyle } from './dashboardApi';
 
-function CustomTable({
+function ShipmentGrid({
   data,
   page,
   rowsPerPage,
@@ -140,4 +140,4 @@ function CustomTable({
   );
 }
 
-export default CustomTable;
+export default ShipmentGrid;
